@@ -73,6 +73,16 @@ class User extends Authenticatable
 
     public function reviews()
     {
+        return $this->hasMany('App\Models\Review');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    public function reactions()
+    {
         return $this->hasMany('App\Models\Reviews');
     }
 

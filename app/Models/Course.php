@@ -68,4 +68,16 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Models\User', 'user_id');
     }
+
+    //NOTE relacion uno a uno polimorfica
+    public function image()
+    {
+        return $this->morphOne('App\Models\Image', 'imageable');
+    }
+
+    //NOTE relacion de curso con lecciones
+    public function lessons()
+    {
+        return $this->hasManyThrough('App\Models\Lesson', 'App\Models\Section');
+    }
 }
