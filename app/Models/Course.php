@@ -19,6 +19,26 @@ class Course extends Model
         return $this->hasMany('App\Models\Review');
     }
 
+    public function requirements()
+    {
+        return $this->hasMany('App\Models\Requirement');
+    }
+
+    public function goals()
+    {
+        return $this->hasMany('App\Models\Goal');
+    }
+
+    public function audiences()
+    {
+        return $this->hasMany('App\Models\Audience');
+    }
+
+    public function sections()
+    {
+        return $this->hasMany('App\Models\Section');
+    }
+
     // NOTE relacion uno a muchos inversa
 
     //public function user()
@@ -37,7 +57,7 @@ class Course extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
-    public function pricc()
+    public function price()
     {
         return $this->belongsTo('App\Models\Price');
     }
