@@ -9,6 +9,8 @@ class Goal extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     //NOTE relacion uno a muchos inversa
     public function course()
     {

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id', 'status'];
+
     // NOTE declaración de constantes
     const BORRADOR = 1;
     const REVISION = 2;

@@ -9,6 +9,8 @@ class Section extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     //NOTE relacion uno a muchos
     public function lessons()
     {
