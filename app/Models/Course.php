@@ -10,11 +10,22 @@ class Course extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'status'];
+    protected $withCount = ['students', 'reviews'];
+
 
     // NOTE declaración de constantes
     const BORRADOR = 1;
     const REVISION = 2;
     const PUBLICADO = 3;
+
+    public function getRatingAttribute()
+    {
+        if ($this->reviews_count) {
+            return round($this->reviews->avg('rating'), 1);
+        } else {
+            return 5;
+        }
+    }
 
     // NOTE relacion uno a muchos
     public function reviews()
@@ -54,22 +65,22 @@ class Course extends Model
     {
         return $this->belongsTo('App\Models\Level');
     }
-
+    //se cambio el category por que en el repositorio estaba asi
     public function category()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo('App\Models\Level');
     }
-
+    //se cambio el price por que en el repositorio estaba asi
     public function price()
     {
-        return $this->belongsTo('App\Models\Price');
+        return $this->belongsTo('App\Models\Level');
     }
 
     // NOTE relacion muchos a muchos
     //public function users()
     public function students()
     {
-        return $this->belongsToMany('App\Models\User', 'user_id');
+        return $this->belongsToMany('App\Models\User');
     }
 
     //NOTE relacion uno a uno polimorfica
