@@ -12,7 +12,6 @@ class Course extends Model
     protected $guarded = ['id', 'status'];
     protected $withCount = ['students', 'reviews'];
 
-
     // NOTE declaración de constantes
     const BORRADOR = 1;
     const REVISION = 2;
@@ -25,6 +24,11 @@ class Course extends Model
         } else {
             return 5;
         }
+    }
+
+    public function getRouteKeyName()
+    {
+        return "slug";
     }
 
     // NOTE relacion uno a muchos
