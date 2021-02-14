@@ -86,7 +86,7 @@ class Course extends Model
     //se cambio el category por que en el repositorio estaba asi
     public function category()
     {
-        return $this->belongsTo('App\Models\Level');
+        return $this->belongsTo('App\Models\Category');
     }
     //se cambio el price por que en el repositorio estaba asi
     public function price()
