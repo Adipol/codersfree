@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -23,5 +22,11 @@ class CourseController extends Controller
             ->take(5)
             ->get();
         return view('courses.show', compact('course', 'similares'));
+    }
+
+    public function enrolled(Course $course)
+    {
+        $course->students()->attach(auth()->user()->id);
+        return redirect()->route('course.status', $course);
     }
 }
