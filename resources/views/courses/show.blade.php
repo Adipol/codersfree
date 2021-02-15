@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     @can('enrolled', $course)
-                    <a class="mt-4 btn btn-danger btn-block" href="{{ route('course.status',$course) }}">Continuar con el curso</a>
+                    <a class="mt-4 btn btn-danger btn-block" href="{{ route('courses.status',$course) }}">Continuar con el curso</a>
                     @else
                     <form action="{{ route('courses.enrolled',$course) }}" method="post">
                         @csrf
