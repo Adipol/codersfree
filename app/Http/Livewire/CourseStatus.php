@@ -34,8 +34,8 @@ class CourseStatus extends Component
     //NOTE propiedades computadas
     public function getIndexProperty()
     {
-        //NOTE pluck solo trae la collecion de solo id
-        return $this->course->lesson->pluck('id')->search($this->current->id);
+        //NOTE pluck solo trae la colección de solo id
+        //return $this->course->lesson->pluck('id')->search($this->current->id);
     }
 
     public function getPreviousProperty()
@@ -49,10 +49,10 @@ class CourseStatus extends Component
 
     public function getNextProperty()
     {
-        if ($this->index == $this->course->lessonn->count() - 1) {
-            return null;
-        } else {
-            return $this->course->lessons[$this->index + 1];
-        }
+        // if ($this->index == $this->course->lesson->count() - 1) {
+        //     return null;
+        // } else {
+        return $this->course->lessons[$this->index + 1];
+        //}
     }
 }
