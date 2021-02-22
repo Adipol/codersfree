@@ -15,6 +15,8 @@ class CourseController extends Controller
     //NOTE es una instancia de course
     public function show(Course $course)
     {
+        $this->authorize('published', $course);
+
         $similares = Course::where('category_id', $course->category_id)
             ->where('id', '!=', $course->id)
             ->where('status', 3)
