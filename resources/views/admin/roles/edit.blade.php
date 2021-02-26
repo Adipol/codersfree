@@ -3,17 +3,17 @@
 @section('title', 'Coders Free')
 
 @section('content_header')
-<h1>Crear nuevo rol</h1>
+<h1>Editar rol</h1>
 @stop
 
 @section('content')
 <div class="body">
     <div class="card-body">
-        {!! Form::open(['route'=>'admin.roles.store']) !!}
+        {!! Form::model($role,['route'=>['admin.roles.update', $role],'method'=>'put'] ) !!}
 
         @include('admin.roles.partials.form')
 
-        {!! Form::submit('Crear Rol', ['class'=>'btn btn-primary mt-2']) !!}
+        {!! Form::submit('Actualizar Rol', ['class'=>'btn btn-primary mt-2']) !!}
         {!! Form::close() !!}
     </div>
 </div>
