@@ -120,9 +120,17 @@ $nav_links=[
                                 Perfil
                             </x-jet-dropdown-link>
 
+                            @can('Leer cursos')
                             <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
                                 Instructor
                             </x-jet-dropdown-link>
+                            @endcan
+
+                            @can('Ver dashboard')
+                            <x-jet-dropdown-link href="{{ route('admin.home') }}">
+                                Administrador
+                            </x-jet-dropdown-link>
+                            @endcan
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -196,9 +204,17 @@ $nav_links=[
                     Perfil
                 </x-jet-responsive-nav-link>
 
+                @can('Leer curso')
                 <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
                     Instructor
                 </x-jet-responsive-nav-link>
+                @endcan
+
+                @can('Ver dashboard')
+                <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home')">
+                    Administrador
+                </x-jet-responsive-nav-link>
+                @endcan
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                 <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
