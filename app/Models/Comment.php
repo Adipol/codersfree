@@ -16,13 +16,13 @@ class Comment extends Model
         return $this->morphTo();
     }
 
-    //NOTE relacion uno a muchos inversa
+    //NOTE relación uno a muchos inversa
     public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
 
-    //NOTE relacion uno a muchos polimorfica
+    //NOTE relación uno a muchos polimorfica
     public function comments()
     {
         return $this->morphMany('App\Models\Comment', 'commentable');

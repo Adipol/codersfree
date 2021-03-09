@@ -11,7 +11,7 @@ class Description extends Model
 
     protected $guarded = ['id'];
 
-    //NOTE relacion uno a uno inversa
+    //NOTE relación uno a uno inversa
     public function lesson()
     {
         return $this->belongsTo('App\Models\Lesson');
