@@ -56,6 +56,10 @@
      </figure>
      <div>
          <p class="mb-2">Sed sit accusam gubergren accusam no dolore lorem rebum ea, et tempor sed erat labore consetetur, ut eos voluptua eos.</p>
-         {!! Form::file('file', ['class'=>'form-input w-full', 'id'=>'file']) !!}
+         {!! Form::file('file', ['class'=>'form-input w-full' . ($errors->has('description') ? 'border-red-600' : ''), 'id'=>'file','accept'=>'image/*']) !!}
+
+         @error('file')
+         <strong class="text-xs text-red-500">{{ $message }}</strong>
+         @enderror
      </div>
  </div>
