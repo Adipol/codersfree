@@ -12,7 +12,8 @@ class CourseController extends Controller
         return view('courses.index');
     }
 
-    //NOTE es una instancia de course
+    //* Es una instancia de course
+
     public function show(Course $course)
     {
         $this->authorize('published', $course);
