@@ -1,6 +1,6 @@
 <div>
     @foreach ($section->lessons as $item)
-    <article class="mt-4 card">
+    <article class="mt-4 card" x-data="{open: false}">
         <div class="card-body">
 
             @if($lesson->id == $item->id)
@@ -40,10 +40,10 @@
             @else
 
             <header>
-                <h1><i class="mr-1 text-blue-500 far fa-play-circle"></i>Lección: {{ $item->name }}</h1>
+                <h1 x-on:click="open=!open" class="cursor-pointer"><i class="mr-1 text-blue-500 far fa-play-circle"></i>Lección: {{ $item->name }}</h1>
             </header>
 
-            <div>
+            <div x-show="open">
                 <hr class="my-2">
                 <p class="text-sm">Plataforma: {{ $item->platform->name }}</p>
                 <p class="text-sm">Enlace: <a class="text-blue-600" href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></p>
@@ -52,8 +52,11 @@
                     <button class="text-sm btn btn-primary" wire:click="edit({{ $item }})">Editar</button>
                     <button class="text-sm btn btn-danger" wire:click="destroy({{ $item }})">Eliminar</button>
                 </div>
-                <div>
+                <div class="mb-4">
                     @livewire('instructor.lesson-description',['lesson'=>$item], key($item->id))
+                </div>
+                <div>
+                    @livewire('instructor.lesson-resources',['lesson'=>$item],key($item->id))
                 </div>
             </div>
             @endif
