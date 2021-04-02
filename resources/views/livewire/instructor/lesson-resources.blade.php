@@ -5,12 +5,14 @@
         </header>
         <div x-show="open">
             <hr class="my-2">
+
             @if($lesson->resource)
             <div class="flex justify-between item-center">
                 <p><i wire:click="download" class="mr-2 text-blue-500 cursor-pointer fas fa-download"></i>{{ $lesson->resource->url }}</p>
                 <i wire:click="destroy" class="text-red-500 cursor-pointer color-blue-500 fas fa-trash"></i>
             </div>
             @else
+
             <form wire:submit.prevent="save">
                 <div class="flex items-center">
                     <input wire:model="file" type="file" class="flex-1 form-input">
@@ -22,7 +24,9 @@
                 </div>
 
                 @error('file')
+
                 <span class="text-xs text-red-500">{{ $message }}</span>
+
                 @enderror
 
             </form>
