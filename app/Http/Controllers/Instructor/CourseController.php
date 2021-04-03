@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:Listar role')->only('index');
+        $this->middleware('can:Crear role')->only('create', 'store');
+        $this->middleware('can:Actualizar role')->only('edit', 'update', 'goals');
+        $this->middleware('can:Eliminar role')->only('edit', 'destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -86,6 +94,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $this->authorize('dicatated', $course);
         //NOTE tomar en cuenta que laravel collective trabaja con pluck el indice sera el id
         $categories = Category::pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
@@ -103,6 +112,8 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        $this->authorize('dicatated', $course);
+
         $request->validate([
             'title' => 'required',
             'slug' => 'required:unique:courses,slug,' . $course->id,
@@ -148,6 +159,7 @@ class CourseController extends Controller
 
     public function goals(Course $course)
     {
+        $this->authorize('dicatated', $course);
         return view('instructor.courses.goals', compact('course'));
     }
 }
