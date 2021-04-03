@@ -32,17 +32,21 @@
             <aside>
                 <h1 class="mb-4 text-lg font-bold">Edición del curso</h1>
                 <ul class="text-sm text-gray-600">
-                    <li class="pl-2 mb-1 leading-7 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400 @else border-transparent @endif">
+                    <li
+                    class="pl-2 mb-1 leading-7 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400 @else border-transparent @endif">
                         <a href="{{ route('instructor.courses.edit', $course) }}">Información del curso</a>
                     </li>
-                    <li class="pl-2 mb-1 leading-7 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400 @else border-transparent @endif">
+                    <li
+                    class="pl-2 mb-1 leading-7 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400 @else border-transparent @endif">
                         <a href="{{ route('instructor.courses.curriculum', $course) }}">Lección del curso</a>
                     </li>
-                    <li class="pl-2 mb-1 leading-7 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400 @else border-transparent @endif">
+                    <li
+                    class="pl-2 mb-1 leading-7 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400 @else border-transparent @endif">
                         <a href="{{ route('instructor.courses.goals', $course) }}">Metas del curso</a>
                     </li>
-                    <li class="pl-2 mb-1 leading-7 border-l-4 border-transparent">
-                        <a href="">Estudiantes</a>
+                    <li
+                    class="pl-2 mb-1 leading-7 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400 @else border-transparent @endif">
+                        <a href="{{ route('instructor.courses.students', $course) }}">Estudiantes</a>
                     </li>
                 </ul>
             </aside>
@@ -59,7 +63,7 @@
     @livewireScripts
 
     @isset($js)
-    {{ $js }}
+        {{ $js }}
     @endisset
 
 </body>
