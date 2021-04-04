@@ -28,10 +28,10 @@
         @livewire('navigation-menu')
 
         <!-- Page Content -->
-        <div class="container grid grid-cols-5 py-5">
+        <div class="container grid grid-cols-5 gap-6 py-5">
             <aside>
                 <h1 class="mb-4 text-lg font-bold">Edición del curso</h1>
-                <ul class="text-sm text-gray-600">
+                <ul class="mb-4 text-sm text-gray-600">
                     <li
                     class="pl-2 mb-1 leading-7 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400 @else border-transparent @endif">
                         <a href="{{ route('instructor.courses.edit', $course) }}">Información del curso</a>
@@ -49,6 +49,34 @@
                         <a href="{{ route('instructor.courses.students', $course) }}">Estudiantes</a>
                     </li>
                 </ul>
+
+                @switch($course->status)
+                    @case(1)
+                    <form action="{{ route('instructor.courses.status', $course) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Solicitar revision</button>
+                    </form>
+                    @break
+                    @case(2)
+                    <div class="text-gray-500 card">
+                        <div class="card-body">
+                            Este curso se encuentra en revision
+                        </div>
+                    </div>
+                    @break
+                    @case(3)
+                    <div class="text-gray-500 card">
+                        <div class="card-body">
+                            Este curso se encuentra en publicado
+                        </div>
+                    </div>
+                    @break
+                    @default
+
+                @endswitch
+
+
+
             </aside>
             <div class="col-span-4 card">
                 <main class="text-gray-600 card-body">

@@ -1,39 +1,39 @@
 <div>
-    <x-slot name="course">
-        {{ $course->slug }}
-    </x-slot>
 
     <h1 class="text-2xl font-bold">LECCIONES DEL CURSO</h1>
     <hr class="mt-2 mb-6">
 
-    @foreach($course->sections as $item)
+    @foreach ($course->sections as $item)
 
-    <article class="mb-6 card" x-data="{open: true}">
-        <div class="bg-gray-100 card-body">
+        <article class="mb-6 card" x-data="{open: true}">
+            <div class="bg-gray-100 card-body">
 
-            @if($section->id==$item->id)
-            <form wire:submit.prevent="update">
-                <input wire:model="section.name" class="form-input w-full placeholder=" Ingrese el nombre de la sección "></input>
+                @if ($section->id == $item->id)
+                    <form wire:submit.prevent="update">
+                        <input wire:model="section.name" class="form-input w-full placeholder=" Ingrese el nombre de la
+                            sección "></input>
                 @error('section.name')
-                    <span class="text-xs text-red-500 ">{{ $message }}</span>
+                        <span class="text-xs text-red-500 ">{{ $message }}</span>
                 @enderror
             </form>
-            @else
+        @else
             <header class="flex items-center justify-between ">
                 <h1 x-on:click=" open=!open" class="cursor-pointer "><strong>Sección:</strong> {{ $item->name }}</h1>
-                <div>
-                    <i class="text-blue-500 cursor-pointer fas fa-edit" wire:click="edit({{ $item }})"></i>
-                    <i class="text-red-500 cursor-pointer fas fa-eraser" wire:click="destroy({{ $item }})"></i>
-                </div>
-                </header>
+                        <div>
+                            <i class="text-blue-500 cursor-pointer fas fa-edit"
+                                wire:click="edit({{ $item }})"></i>
+                            <i class="text-red-500 cursor-pointer fas fa-eraser"
+                                wire:click="destroy({{ $item }})"></i>
+                        </div>
+                        </header>
 
-                <div x-show="open">
-                    @livewire('instructor.courses-lesson',['section'=>$item], key($item->id))
-                </div>
+                        <div x-show="open">
+                            @livewire('instructor.courses-lesson',['section'=>$item], key($item->id))
+                        </div>
                 @endif
 
-        </div>
-    </article>
+            </div>
+        </article>
 
     @endforeach
 
@@ -49,7 +49,7 @@
                 <div class="mb-4">
                     <input wire:model="name" class="w-full form-input" placeholder="Escribe el nombre de la sección">
                     @error('name')
-                    <span class="text-xs text-red-500">{{ $message }}</span>
+                        <span class="text-xs text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="flex justify-end">
